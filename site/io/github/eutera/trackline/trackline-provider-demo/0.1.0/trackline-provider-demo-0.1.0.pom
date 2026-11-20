@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- This module was also published with a richer model, Gradle metadata,  -->
+  <!-- which should be used instead. Do not delete the following line which  -->
+  <!-- is to indicate to Gradle or any Gradle module metadata file consumer  -->
+  <!-- that they should prefer consuming it instead. -->
+  <!-- do_not_remove: published-with-gradle-metadata -->
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>io.github.eutera.trackline</groupId>
+  <artifactId>trackline-provider-demo</artifactId>
+  <version>0.1.0</version>
+  <packaging>aar</packaging>
+  <name>Trackline Demo provider</name>
+  <description>Offline Trackline provider with five attributed sample recordings.</description>
+  <url>https://github.com/Eutera/trackline-provider-demo</url>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <comments>Project-owned code. Bundled recordings have separate licenses.</comments>
+    </license>
+    <license>
+      <name>Creative Commons Attribution 4.0 International</name>
+      <url>https://creativecommons.org/licenses/by/4.0/</url>
+      <comments>Bundled recordings except Crazy Glue; see DEMO-MUSIC-CREDITS.md.</comments>
+    </license>
+    <license>
+      <name>Creative Commons Attribution 3.0 United States</name>
+      <url>https://creativecommons.org/licenses/by/3.0/us/</url>
+      <comments>Crazy Glue by Josh Woodward; see DEMO-MUSIC-CREDITS.md.</comments>
+    </license>
+  </licenses>
+  <scm>
+    <connection>scm:git:https://github.com/Eutera/trackline-provider-demo.git</connection>
+    <url>https://github.com/Eutera/trackline-provider-demo</url>
+  </scm>
+  <dependencies>
+    <dependency>
+      <groupId>io.github.eutera.trackline</groupId>
+      <artifactId>trackline-provider-api</artifactId>
+      <version>0.1.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib</artifactId>
+      <version>2.2.10</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>androidx.media3</groupId>
+      <artifactId>media3-exoplayer</artifactId>
+      <version>1.11.1</version>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
+</project>
