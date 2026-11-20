@@ -1,0 +1,10 @@
+[
+  {
+    "artifact": "trackline-provider-api",
+    "version": "0.1.0",
+    "commit": "e3a5ef6c5325af8dc782fd24f6b774a1bac72dbd",
+    "release": "https://github.com/Eutera/trackline-provider-api/releases/tag/v0.1.0",
+    "source": "https://github.com/Eutera/trackline-provider-api/releases/download/v0.1.0/trackline-provider-api-0.1.0-source.zip",
+    "license": "Apache-2.0"
+  }
+]

@@ -1,0 +1,110 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "io.github.eutera.trackline",
+    "module": "trackline-provider-api",
+    "version": "0.1.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.6.0"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlinx",
+          "module": "kotlinx-coroutines-core",
+          "version": {
+            "requires": "1.11.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.2.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "trackline-provider-api-0.1.0.aar",
+          "url": "trackline-provider-api-0.1.0.aar",
+          "size": 32746,
+          "sha512": "120bc50edc53947c53a299a2b90999855a699c7dfc003c2de76910c6101fa97b4566c6bedda23a49f640d8ec66b73cf361529b73c2c783029e6de82ef091c903",
+          "sha256": "6f774e6b3a9e08316e73c81b21246a4add17656bae267dd03f198272776c674c",
+          "sha1": "10fae816f1a33b79cb5533666241f6dceec900c5",
+          "md5": "85eff05c30222fdc9454ece43dcf1851"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlinx",
+          "module": "kotlinx-coroutines-core",
+          "version": {
+            "requires": "1.11.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.2.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "trackline-provider-api-0.1.0.aar",
+          "url": "trackline-provider-api-0.1.0.aar",
+          "size": 32746,
+          "sha512": "120bc50edc53947c53a299a2b90999855a699c7dfc003c2de76910c6101fa97b4566c6bedda23a49f640d8ec66b73cf361529b73c2c783029e6de82ef091c903",
+          "sha256": "6f774e6b3a9e08316e73c81b21246a4add17656bae267dd03f198272776c674c",
+          "sha1": "10fae816f1a33b79cb5533666241f6dceec900c5",
+          "md5": "85eff05c30222fdc9454ece43dcf1851"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseSourcePublication",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "trackline-provider-api-0.1.0-sources.jar",
+          "url": "trackline-provider-api-0.1.0-sources.jar",
+          "size": 12528,
+          "sha512": "e6db5f21b21b4096882a8b3f36ea7f4ff8f4e414e83ddb58e8b416e8ac8e17263afb8f844252582fba2d0ff94c4ccc0ab817cdf1f6df69b66ce2efa91ec5d55e",
+          "sha256": "f079c852ea5b3f9dc63eef0bda9a54569d4f6ea6b02f3ddb4c62b77c5a44c41d",
+          "sha1": "9b89b8d8b79984fb3f0eb7763246a1325d4d07ec",
+          "md5": "59d37aae8b7adcf3395c585d07edbc5a"
+        }
+      ]
+    }
+  ]
+}
