@@ -1,0 +1,66 @@
+name: Import release
+
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: Approved source repository
+        type: choice
+        options:
+          - trackline-provider-api
+        required: true
+      version:
+        description: Release version, such as 0.1.0
+        type: string
+        required: true
+
+permissions: {}
+
+concurrency:
+  group: import-release
+  cancel-in-progress: false
+
+jobs:
+  import:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+      - name: Verify and import publication
+        env:
+          SOURCE_REPOSITORY: ${{ inputs.repository }}
+          RELEASE_VERSION: ${{ inputs.version }}
+        run: python3 import_release.py "$SOURCE_REPOSITORY" "$RELEASE_VERSION"
+      - name: Save the updated Maven repository
+        run: |
+          git add -- site
+          if ! git diff --cached --quiet; then
+            git -c user.name=Eutera -c user.email=the.eutera@gmail.com \
+                commit -m "Import ${SOURCE_REPOSITORY} ${RELEASE_VERSION}"
+            git push origin HEAD:main
+          fi
+        env:
+          SOURCE_REPOSITORY: ${{ inputs.repository }}
+          RELEASE_VERSION: ${{ inputs.version }}
+      - name: Package the complete Maven site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+  deploy:
+    needs: import
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy the Maven site
+        uses: actions/deploy-pages@v4
+        id: deployment
