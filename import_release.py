@@ -16,7 +16,7 @@ from urllib.request import Request, urlopen
 OWNER = "Eutera"
 GROUP = "io.github.eutera.trackline"
 GROUP_PATH = Path(*GROUP.split("."))
-APPROVED_REPOSITORIES = ("trackline-provider-api",)
+REPOSITORY_PATTERN = r"trackline-provider-[a-z0-9]+(?:-[a-z0-9]+)*"
 VERSION_PATTERN = r"(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)"
 CHECKSUMS = ("md5", "sha1", "sha256", "sha512")
 
@@ -29,6 +29,12 @@ def require(condition, message):
 def version_key(version):
     require(re.fullmatch(VERSION_PATTERN, version), f"Invalid stable version: {version}")
     return tuple(map(int, version.split(".")))
+
+
+def provider_repository(value):
+    if not re.fullmatch(REPOSITORY_PATTERN, value):
+        raise argparse.ArgumentTypeError("Expected an Eutera repository named trackline-provider-...")
+    return value
 
 
 def download(url):
@@ -81,6 +87,18 @@ def read_release(repository, version):
         "source": f"{download_url}/{prefix}-source.zip",
         "license": manifest["license"]["spdx"],
     }
+    notices = []
+    for notice in manifest.get("notices", []):
+        path, title = notice["path"], notice["title"]
+        require(
+            re.fullmatch(r"[A-Za-z0-9_./-]+", path)
+            and all(part not in ("", ".", "..") for part in path.split("/")),
+            "Notice must use a relative source file path",
+        )
+        require(isinstance(title, str) and title.strip(), "Notice must have a title")
+        notices.append({"title": title, "url": f"https://github.com/{OWNER}/{repository}/blob/{commit}/{path}"})
+    if notices:
+        record["notices"] = notices
     return bundle, manifest["mavenFiles"], record
 
 
@@ -145,12 +163,17 @@ def write_release_index(site, releases):
         coordinate = f"{GROUP}:{artifact}:{version}"
         aar = GROUP_PATH / artifact / version / f"{artifact}-{version}.aar"
         license_url = f"https://github.com/{OWNER}/{artifact}/blob/{record['commit']}/LICENSE"
+        notices = "".join(
+            f'<a href="{html.escape(notice["url"], quote=True)}">{html.escape(notice["title"])}</a> · '
+            for notice in record.get("notices", [])
+        )
         entries.append(
             f"<li><code>{html.escape(coordinate)}</code> · "
             f'<a href="{aar.as_posix()}">AAR</a> · '
             f'<a href="{record["release"]}">Release</a> · '
             f'<a href="{record["source"]}">Full source</a> · '
             f'<a href="{license_url}">{html.escape(record["license"])}</a> · '
+            f"{notices}"
             f"<code>{record['commit']}</code></li>"
         )
     (site / "index.html").write_text(
@@ -191,7 +214,7 @@ def save_publication(site, files, record):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("repository", choices=APPROVED_REPOSITORIES)
+    parser.add_argument("repository", type=provider_repository)
     parser.add_argument("version")
     parser.add_argument("--site-dir", type=Path, default=Path("site"))
     args = parser.parse_args()

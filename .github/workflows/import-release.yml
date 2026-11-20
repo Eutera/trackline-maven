@@ -4,10 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       repository:
-        description: Approved source repository
-        type: choice
-        options:
-          - trackline-provider-api
+        description: Reviewed Eutera repository named trackline-provider-...
+        type: string
+        default: trackline-provider-demo
         required: true
       version:
         description: Release version, such as 0.1.0
