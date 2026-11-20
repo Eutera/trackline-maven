@@ -22,6 +22,20 @@
     ]
   },
   {
+    "artifact": "trackline-provider-spotify",
+    "version": "0.1.0",
+    "commit": "b6ee22a677dfb3f623d3e6fe09999dcf4a078392",
+    "release": "https://github.com/Eutera/trackline-provider-spotify/releases/tag/v0.1.0",
+    "source": "https://github.com/Eutera/trackline-provider-spotify/releases/download/v0.1.0/trackline-provider-spotify-0.1.0-source.zip",
+    "license": "Apache-2.0",
+    "notices": [
+      {
+        "title": "Spotify SDK notice",
+        "url": "https://github.com/Eutera/trackline-provider-spotify/blob/b6ee22a677dfb3f623d3e6fe09999dcf4a078392/src/main/assets/licenses/SPOTIFY-NOTICE"
+      }
+    ]
+  },
+  {
     "artifact": "trackline-provider-youtube",
     "version": "0.1.0",
     "commit": "1db8afb6dc88dfdd9eba6a9b412d12bbc6e428bb",
