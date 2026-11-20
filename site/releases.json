@@ -6,5 +6,19 @@
     "release": "https://github.com/Eutera/trackline-provider-api/releases/tag/v0.1.0",
     "source": "https://github.com/Eutera/trackline-provider-api/releases/download/v0.1.0/trackline-provider-api-0.1.0-source.zip",
     "license": "Apache-2.0"
+  },
+  {
+    "artifact": "trackline-provider-youtube",
+    "version": "0.1.0",
+    "commit": "1db8afb6dc88dfdd9eba6a9b412d12bbc6e428bb",
+    "release": "https://github.com/Eutera/trackline-provider-youtube/releases/tag/v0.1.0",
+    "source": "https://github.com/Eutera/trackline-provider-youtube/releases/download/v0.1.0/trackline-provider-youtube-0.1.0-source.zip",
+    "license": "GPL-3.0-only",
+    "notices": [
+      {
+        "title": "Third-party notices",
+        "url": "https://github.com/Eutera/trackline-provider-youtube/blob/1db8afb6dc88dfdd9eba6a9b412d12bbc6e428bb/THIRD_PARTY_NOTICES.md"
+      }
+    ]
   }
 ]
